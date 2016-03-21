@@ -9,7 +9,10 @@
 (define (find-divisor n test-divisor)
   (cond ((> (square test-divisor) n) n)
 	((devides? test-divisor n) test-divisor)
-	(else (find-divisor n (+ test-divisor 1)))))
+	(else (find-divisor n (next-odd test-divisor)))))
+;	(else (find-divisor n (+ 1 test-divisor)))))
+;just modify one line improve about 20% performance
+				       
 
 (define (devides? small big)
   (= (remainder big small) 0))
