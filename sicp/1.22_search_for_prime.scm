@@ -1,4 +1,4 @@
-;;Time-IsPrime-Thread n start-time
+i;;Time-IsPrime-Thread n start-time
 ;;input : n start-time
 ;;output : if n is prime, elapsed-time
 

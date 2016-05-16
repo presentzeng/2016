@@ -7,5 +7,4 @@
 	   (+ (d i) (g (+ 1 i))))))
   (g 1))
 
-(f (lambda (i) 1.0) (lambda (i) 1.0) 10)
-  
+(f (lambda (i) 1.0) (lambda (i) 1.0) 10)  
