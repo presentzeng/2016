@@ -1,4 +1,4 @@
-;sum (a, b) func(a) + func(next(a)) .... + func(b)
+a;sum (a, b) func(a) + func(next(a)) .... + func(b)
 ;accumulate : to construct product & sum
 ;valid? : to determine is a is valid
 

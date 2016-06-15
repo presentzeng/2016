@@ -1,9 +1,4 @@
-(define (func a b)
-  (define (test a)
-    (define (my n)
-      (+ n 1))
-   (my 2))
-  (test 3))
+(define (damp f)
+  (lambda (x) (average x (f x))))
 
-(func 1 2)
-    
+((damp square) 10)
