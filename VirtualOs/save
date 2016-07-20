@@ -1,0 +1,3 @@
+rm .* ~*
+cp -r * /mnt/hgfs/ubuntuShare/2016/VirtualOs/
+

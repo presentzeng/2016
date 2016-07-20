@@ -1,0 +1,8 @@
+find . -name '*.c' -exec cp {} /home/presentzeng/MyWork/2016/VirtualOs/ \;
+make
+rm *.c *.o 
+echo "                                 "
+echo "                                 "
+./bin
+echo "                                 "
+echo "                                 "
