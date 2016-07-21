@@ -13,5 +13,6 @@
 (define (to-digit n) ((n (lambda (k) (+ k 1))) 0.2))
 
 ;(define (mult 
+;;flag
 (to-digit three)
 ;(to-digit (succ zero))

@@ -9,4 +9,9 @@
 
 ;(define obj1 (cons 2 3))
 ;(cdr obj1)
-(cdr (cons 5 6))
+;(cdr (cons 5 6))
+(define one (list 1 2 3))
+(define two (list 4 5 6))
+
+(define three (cons one two))
+

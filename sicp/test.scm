@@ -1,4 +1,4 @@
-(define (damp f)
-  (lambda (x) (average x (f x))))
+(define one (list 1 2))
+(define two (list 3 4))
 
-((damp square) 10)
+(append one two)
