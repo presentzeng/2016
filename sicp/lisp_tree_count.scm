@@ -1,4 +1,4 @@
-(define (length list)
+(define two (list 1 (list 2 (list 3 4))))(define (length list)
   (if (null? list)
       0
       (+ 1 (length (cdr list)))))
