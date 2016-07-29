@@ -1,4 +1,5 @@
 ;;flag
+;;(op list1 (op list2 (op init)))
 (define (accumulate op init list)
   (if (null? list)
       init

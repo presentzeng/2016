@@ -1,3 +1,2 @@
 rm *~ .* \#*
-cp * /mnt/hgfs/ubuntuShare/2016/sicp/
 
