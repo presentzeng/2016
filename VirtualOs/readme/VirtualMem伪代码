@@ -1,0 +1,74 @@
+/*
+   8 bits virtual memory, that means 256 bytes total
+   the cache is 20 bytes
+   the main memory is 50 bytes
+   disk is 240 bytes int VirtualOs it presents as file
+   page size is 8 bytes that means 3 bits
+   page num is 32 that means 5 bits
+*/
+#define LENGTH 32           //pte个数 
+#define PAGE_SIZE 8         //单位是byte,页面大小
+#define FETCH_SIZE 1        //byte
+#define VPN(x) x >> 3
+#define VPO(x) x & 0x111
+
+/*store in dram */
+struct Page_Table
+{
+    uint32 Start_Addr;  //Page_Table在内存中的起始地址
+    uint8 Length;       //Page_Table的pte个数,pte长度是32bit,存的是真实的物理地址
+}
+
+/* r/w/x bit 不应该交给vm来做,应该是中间层在调用vm接口时,自己做判断,也就是vm是看不到上面的process的*/
+/* page valid tag */
+uint32 valid_tag;
+Page_Table page_table;
+
+/* check if vpn is valid */ 
+bool check_valid(uint8 index)
+{
+    return valid_tag & (1 << index);
+}
+
+/*select victim_page */
+int select_victim()
+{
+  return 1;
+}
+//传进来虚拟页号
+void swap(uint8 vpn)
+{
+    //通过算法选定victim page并获取其phy_addr,并将valid bit清掉
+    int victim_page = select_victim();
+    valid_tag &= ~(1 << victim_page);
+
+    //打开文件,这里相当于从磁盘读东西
+    FILE * fp = fopen(file);
+    fseek(fp, vpn * PAGE_SIZE);
+
+    //读一个page到物理空间来
+    buf = page_table.Start_Addr + victim_page;
+    fread(fp, buf, PAGE_SIZE);
+
+    //此时已经完成缺页处理,再次fetch一次即可
+}
+
+/* fetch the index page from disk */
+/* return -1 fail 0 success */
+
+bool fetch(uint8 vm_addr, uint8 buf)
+{
+    uint8 vpn = VPN(vm_addr);
+    uint8 vpo = VPO(vm_addr)
+    //如果valid,则该虚拟页有在内存中,直接copy过来即可
+    if(check_valid(vpn))
+    {
+        memcpy(buf, page_table.Start_Addr + vpn * PAGE_SIZE + vpo, FETCH_SIZE);
+    }
+    else//将虚拟地址传给
+    {
+        //page_fault;
+        swap(vpn);
+    }
+}
+

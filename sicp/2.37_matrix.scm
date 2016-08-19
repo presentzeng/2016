@@ -1,8 +1,8 @@
-(define one (list 3 4))	 
-(define two (list 5 6))	 
+(define one (list 2 3 4))	 
+(define two (list 1 2))	 
 (define matrix (list
-		(list 2 2)
-		(list 3 3)))
+		(list 1 2)
+		(list 3 4)))
 
 ;(op list1 (op list2 (op list3 init)))
 (define (accumulate op init list)
@@ -36,9 +36,27 @@
        m))
  
 	       
-
-;(map (lambda (x)
- ;      (* 2 x)) 
-  ;   two)
      
-(matrix-vector matrix one)
+(define (dot-product v w)
+  (accumulate + 0 (map * v w)))
+
+;(dot-product (list 1 2 3) (list 4 5 6)) 
+;(map + one one one)
+(define (mv m v)
+  (map (lambda (x)
+	 (dot-product x v)) m))
+
+;(mv matrix two)				
+
+
+
+(define (trans mat)
+  (accumulate-n cons () mat))
+(trans matrix)
+
+(define (mm m1 m2)
+  (let ((cols (trans m2)))
+    (map (lambda (x)
+	   (mv cols x)) m1)))
+
+(mm matrix matrix)

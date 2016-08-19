@@ -41,3 +41,4 @@
 (length1 one)
 ;(append1 one two)
 ;(map1 square one)    		   
+;(map1 + one two)
